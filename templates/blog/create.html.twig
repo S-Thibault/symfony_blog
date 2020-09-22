@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
 
 {% block title %}
     Test Page New
@@ -9,6 +11,32 @@
 {% block body %}
     <h1>Pour créer un nouvel article.<h1/>
     <hr>
-    <p> Ca à l'air de marcher...encore</p>
+
+    {{ form_start(formArticle)}} <!-- On va décomposer les éléments de formArticle pour les afficher différemment. Ce n'est pas necessaire dans la 2nde version mais il est ieux de la rajouter si on veut plus tard, ajouter de nouvelle chose-->
+
+<!-- 1ère façon de faire : -->
+
+    {# <div class="form-group">
+      <label for="">Titre</label>
+      {{ form_widget(formArticle.title) }} <!-- On appelle juste l'affichage du titre -->
+    </div>
+
+    <div class="form-group">
+      <label for="">Contenu</label>
+      {{ form_widget(formArticle.content) }}
+    </div>
+
+    <div class="form-group">
+      <label for="">image</label>
+      {{ form_widget(formArticle.image) }}
+    </div> #}
+
+<!-- 2nde façon de faire avec Bootstrap : -->
+
+    {{ form_widget(formArticle) }} <!-- On n'est pas obligé de garder le "_widget" mais c'est mieux -->
+
+    <button type="submit" class="btn btn-success">Ajouter l'article</button> <!-- ce bouton est donc spécifique à cette vue mais le formulaire utilisé pourra l'être par d'autre vue
+
+    {{ form_end(formArticle)}} <!-- On ferme la décomposition de formArticle. Idem que pour le "form_start" -->
 
 {% endblock %}
