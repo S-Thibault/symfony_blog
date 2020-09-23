@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formComment 'bootstrap_4_layout.html.twig' %}
+
 {% block title %}
     Page Show
 {% endblock %}
@@ -24,9 +26,21 @@
             <div class="metadata">Ecrit le {{ comment.getCreatedAt | date('d/m/Y à H:i') }}.</div>
             <div class="content">
               <p>{{ comment.getContent | raw }}</p>
-
+              <hr>
             </div>
         {% endfor %}
+    </section>
+
+    <section id="newComment">
+      <h4>Laisser votre commentaire sur cette article :</h4>
+      <hr>
+      {{ form_start(formComment) }}
+
+      {{ form_row(formComment.author, {'attr': {'placeholder': "Nom de l'auteur"}} ) }}
+      {{ form_row(formComment.content, {'attr': {'placeholder': "Contenu du commentaire"}} ) }}
+      <button type="submit" class="btn btn-success">Ajouter le commentaire</button>
+
+      {{ form_end(formComment)}}
     </section>
 
 {% endblock %}

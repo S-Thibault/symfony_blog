@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Entity\Comment;
+use App\Form\NewCommentType;
 
 
 class BlogController extends AbstractController
@@ -28,6 +30,7 @@ class BlogController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/", name="home")
      */
@@ -35,6 +38,7 @@ class BlogController extends AbstractController
     {
         return $this->render('blog/home.html.twig');
     }
+
 
     /**
     * @Route("/blog/new", name="blog_create")
@@ -63,7 +67,7 @@ class BlogController extends AbstractController
 
       $form->handleRequest($request);
 
-      if ($form->isSubmitted() && $form->isValid()) { // if ($form->isSubmitted() && $form->isValid()) ne fonctionne pas et envoi une erreur
+      if ($form->isSubmitted() && $form->isValid()) {
         if (!$article->getId()) {
           $article->setCreatedAt(new \DateTime());
         }
@@ -80,14 +84,37 @@ class BlogController extends AbstractController
       ]);
     }
 
+
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
-    public function show($id)
+    public function show($id, Request $request, EntityManagerInterface $manager)
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $article = $repo->find($id);
-        return $this->render('blog/show.html.twig', ['article' => $article]);
+        // return $this->render('blog/show.html.twig', ['article' => $article]);
+
+        $comment = new Comment();
+        $form = $this->createForm(NewCommentType::class, $comment);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+          $comment->setCreatedAt(new \DateTime());
+
+          $comment->setArticle($article);
+
+          $manager->persist($comment);
+          $manager->flush();
+
+          return $this-> redirectToRoute('blog_show', ['id' => $article->getId()]);
+        }
+
+        return $this->render('blog/show.html.twig', [
+          'article' => $article,
+          'formComment' => $form->createView(),
+        ]);
+
     }
 
 }
