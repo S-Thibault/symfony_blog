@@ -39,6 +39,7 @@
     {{ form_row(formArticle.title, {'attr': {'placeholder': "Titre de l'article"}} ) }} <!-- le form_row va permettre de passer des paramètres pour la "vue"-->
     {{ form_row(formArticle.content, {'attr': {'placeholder': "Contenu de l'article"}} ) }}
     {{ form_row(formArticle.image, {'attr': {'placeholder': "URL de l'image"}} ) }}
+    {{ form_row(formArticle.category) }}
 
 
     <button type="submit" class="btn btn-success">
