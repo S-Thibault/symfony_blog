@@ -1,26 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Page Blog - {{controller_name}}
+  Page Blog -
+  {{controller_name}}
 {% endblock %}
 
 {% block body %}
 
-    <section class="article">
+  <section class="article">
 
-        {% for article in articles %}
-        <article>
-            <h2>{{ article.getTitle }}</h2>
-            <div class="metadata">Ecrit le {{ article.getCreatedAt | date('d/m/Y') }} à {{ article.getCreatedAt | date('H:i') }} dans la catégorie {{ article.getCategory.getTitle }}</div>
-            <div class="content">
-                <img src="{{ article.getImage }}" alt=""><br>
-                {{ article.getContent | raw }}<br>
-                <a href="{{ path('blog_show', {'id': article.getId }) }}" class="btn btn-primary">Lire la suite</a>
-                <hr>
-            </div>
-        </article>
-      {% endfor %}
+    {% for article in articles %}
+      <article>
+        <h2>{{ article.getTitle }}</h2>
+        <hr>
+        <div class="metadata">Ecrit le
+          {{ article.getCreatedAt | date('d/m/Y') }}
+          à
+          {{ article.getCreatedAt | date('H:i') }}
+          dans la catégorie
+          {{ article.getCategory.getTitle }}</div>
+        <br>
+        <div class="content">
+          <img src="{{ article.getImage }}" alt="">
+          <hr>
+          {{ article.getContent | raw }}<br>
+          <a href="{{ path('blog_show', {'id': article.getId }) }}" class="btn btn-primary">Lire la suite</a>
+          <hr>
+        </div>
+      </article>
+    {% endfor %}
 
-    </section>
+  </section>
 
 {% endblock %}

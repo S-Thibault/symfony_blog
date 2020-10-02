@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface; // Symfony 5 : ce n'est plus « Doctrine\Common\Persistence\ObjectManager »
+use Doctrine\ORM\EntityManagerInterface; 
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use App\Form\RegistrationType;

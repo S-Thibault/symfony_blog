@@ -3,44 +3,28 @@
 {% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}
-    Test Page New
+  New Article
 {% endblock %}
 
-
 {% block body %}
-    <h1>
-      {% if editMode %}
-        Modifier cet article ?
-      {% else %}
-        Créer un nouvel article ?
-      {% endif %}
+  <h1>
+    {% if editMode %}
+      Modifier cet article ?
+    {% else %}
+      Créer un nouvel article ?
+    {% endif %}
     <h1/>
     <hr>
 
-    {{ form_start(formArticle) }} <!-- On va décomposer les éléments de formArticle pour les afficher différemment -->
+    {{ form_start(formArticle) }}
 
-<!-- 1ère façon de faire : -->
-    {# <div class="form-group">
-      <label for="">Titre</label>
-      {{ form_widget(formArticle.title) }} <!-- On appelle juste l'affichage du titre par le form_widget-->
-    </div>
-    <div class="form-group">
-      <label for="">Contenu</label>
-      {{ form_widget(formArticle.content) }}
-    </div>
-    <div class="form-group">
-      <label for="">image</label>
-      {{ form_widget(formArticle.image) }}
-    </div> #}
-
-<!-- 2nde façon de faire avec Bootstrap : -->
-<!-- Le twig c'est du JSON, les tableau sont entre accolades et pas entre crochet -->
-
-    {{ form_row(formArticle.title, {'attr': {'placeholder': "Titre de l'article"}} ) }} <!-- le form_row va permettre de passer des paramètres pour la "vue"-->
-    {{ form_row(formArticle.content, {'attr': {'placeholder': "Contenu de l'article"}} ) }}
-    {{ form_row(formArticle.image, {'attr': {'placeholder': "URL de l'image"}} ) }}
+    {{ form_row(formArticle.title, {'attr': {'placeholder': "Titre de l'article"}}
+    ) }}
+    {{ form_row(formArticle.content, {'attr': {'placeholder': "Contenu de l'article"}}
+    ) }}
+    {{ form_row(formArticle.image, {'attr': {'placeholder': "URL de l'image"}}
+    ) }}
     {{ form_row(formArticle.category) }}
-
 
     <button type="submit" class="btn btn-success">
       {% if editMode %}
@@ -48,8 +32,8 @@
       {% else %}
         Ajouter l'article
       {% endif %}
-    </button> <!-- ce bouton est donc spécifique à cette vue mais le formulaire utilisé pourra l'être par d'autre vue -->
+    </button>
 
-    {{ form_end(formArticle)}} <!-- On ferme la décomposition de formArticle. Idem que pour le "form_start" -->
+    {{ form_end(formArticle)}}
 
-{% endblock %}
+  {% endblock %}

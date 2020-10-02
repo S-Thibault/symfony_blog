@@ -50,19 +50,6 @@ class BlogController extends AbstractController
         $article = new Article();
       }
 
-// Fait avant de créer le "Form/ArticleType.php" :
-      // $form = $this->createFormBuilder($article)
-      //              ->add('title') // Symfony 5 comprends lui-même de quel type de champs il faut : "text", "textarea", "mail", ... ici c'est du "TextType" par défaut mais il faudrait le préciser si onveut pouvoir rajouter d'autre parametres après.
-      //              // En effet, on peut aussi rajouter des options (sous forme de tableau) comme des attributs "attr" dans lequel on va aussi faire un tableau avec les différents attibuts et leurs valeurs
-      //              // Par exemple : ->add('content', TextareaType::class, ['attr' => ['placeholder' => "Contenu de l'article"]])
-      //              // ici c'est du "TextareaType" par défaut, mais on peut modifier en mettant : add('content', TextType::class) et il faudra rajouter : use Symfony\Component\Form\Extension\Core\Type\TextType; qui est pris dans la documentation, le champs de la forme sera donc de type "text"
-      //              // Toutefoçs, on ne va pas surcharger le controller avec des paramètres de "vue"
-      //              ->add('content')
-      //              ->add('image')
-      //              // ->add('save', SubmitType::class, ['label' => "Sauvegarder"]) // On n'est pas obligé de mettre le boutton ici si on veut pouvoir le changer en réutilisant le formulaire, alors on va le mettre directement dans la "vue" twig
-      //              ->getForm();
-
-
       $form = $this->createForm(ArticleType::class, $article);
 
       $form->handleRequest($request);
