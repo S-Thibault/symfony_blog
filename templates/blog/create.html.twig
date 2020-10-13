@@ -7,16 +7,17 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container p-5">
-    <h1>
+
+    <h4>
       {% if editMode %}
         Modifier cet article
       {% else %}
         Créer un nouvel article
       {% endif %}
-      <h1/>
-      <hr>
+      <h4/>
 
+      <hr>
+      <div class="container p-5">
       {{ form_start(formArticle) }}
 
       {{ form_row(formArticle.title, {'attr': {'placeholder': "Titre de l'article"}}

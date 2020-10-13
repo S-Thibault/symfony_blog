@@ -16,8 +16,7 @@
   <body>
 
     <nav class="navbar navbar-dark bg-secondary nav-justified">
-      <a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
-            <a class="nav-item nav-link active text-white" href="{{ path('blog') -}}">Voir les articles</a>
+      <a class="nav-item nav-link active text-white" href="{{ path('blog')}}">Accueil</a>
             <a class="nav-item nav-link active text-white" href="{{ path('blog_create') }}">Créer un article</a>
           {% if not app.user %}
               <a class="nav-item nav-link active text-white" href="{{ path('security_login') }}">Se connecter</a>

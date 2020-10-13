@@ -18,7 +18,7 @@ use App\Form\NewCommentType;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/", name="blog")
      */
     public function index()
     {
