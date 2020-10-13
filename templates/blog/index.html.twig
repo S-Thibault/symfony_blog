@@ -1,35 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Page Blog -
+  Articles
   {{controller_name}}
 {% endblock %}
 
 {% block body %}
 
-  <section class="article">
+  <div class="container p-5">
+    <div class="row">
 
-    {% for article in articles %}
-      <article>
-        <h2>{{ article.getTitle }}</h2>
-        <hr>
-        <div class="metadata">Ecrit le
-          {{ article.getCreatedAt | date('d/m/Y') }}
-          à
-          {{ article.getCreatedAt | date('H:i') }}
-          dans la catégorie
-          {{ article.getCategory.getTitle }}</div>
-        <br>
-        <div class="content">
-          <img src="{{ article.getImage }}" alt="">
-          <hr>
-          {{ article.getContent | raw }}<br>
-          <a href="{{ path('blog_show', {'id': article.getId }) }}" class="btn btn-primary">Lire la suite</a>
-          <hr>
+      {% for article in articles %}
+
+        <div class="col-sm-4">
+          <div class="mx-1 my-3">
+            <article class="card border-secondary p-3">
+              <a  class="card-text" href="{{ path('blog_show', {'id': article.getId }) }}"><h3>{{ article.getTitle }}</h3><a>
+              <hr>
+
+              <div class="metadata">Ecrit le
+                {{ article.getCreatedAt | date('d/m/Y') }}
+                à
+                {{ article.getCreatedAt | date('H:i') }}
+                dans la catégorie
+                {{ article.getCategory.getTitle }}
+              </div>
+
+              <br>
+
+              <div class="content text-justify">
+                <img class="card-img-top" src="{{ article.getImage }}" alt="">
+                <hr>
+                <p class="lead ">{{ article.getContent | slice(0, 100) | raw  }} ... </p>
+                <hr>
+                <a class="button" href="{{ path('blog_show', {'id': article.getId }) }}"><span>Lire la suite</span></a>
+              </div>
+
+            </article>
+          </div>
         </div>
-      </article>
-    {% endfor %}
 
-  </section>
+      {% endfor %}
+    </div>
+  </div>
 
 {% endblock %}

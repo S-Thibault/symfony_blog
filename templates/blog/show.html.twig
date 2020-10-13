@@ -7,49 +7,54 @@
 {% endblock %}
 
 {% block body %}
-  <article class="">
-    <h2>{{ article.getTitle }}</h2>
-    <hr>
-    <div class="metadata">Ecrit le
-      {{ article.getCreatedAt | date('d/m/Y à H:i') }}
-      dans la catégorie
-      {{ article.getCategory.getTitle }}</div>
-    <br>
-    <div class="content">
-      <img src="{{ article.getImage }}" alt="">
-      <hr>
-      {{ article.getContent | raw }}
-      <a href="{{ path('blog_edit', {'id': article.getId }) }}" class="btn btn-primary">Modifier l'article</a>
-      <hr>
-
-    </div>
-
-  </article>
-
-  <section id="comments">
-    {% for comment in article.comments %}
-      <h4>{{ comment.getAuthor }}</h4>
-      <div class="metadata">Ecrit le
-        {{ comment.getCreatedAt | date('d/m/Y à H:i') }}.</div>
-      <div class="content">
-        <p>{{ comment.getContent | raw }}</p>
+  <div class="container p-5">
+    <div class="row">
+      <article class="">
+        <h2>{{ article.getTitle }}</h2>
         <hr>
-      </div>
-    {% endfor %}
-  </section>
+        <div class="metadata">Ecrit le
+          {{ article.getCreatedAt | date('d/m/Y à H:i') }}
+          dans la catégorie
+          {{ article.getCategory.getTitle }}</div>
+        <br>
+        <div class="content">
+          <img src="{{ article.getImage }}" alt="">
+          <hr>
+          {{ article.getContent | raw }}
+          <a href="{{ path('blog_edit', {'id': article.getId }) }}" class="btn btn-outline-dark">Modifier l'article</a>
+          <hr>
 
-  <section id="newComment">
-    <h4>Laissez votre commentaire sur cette article :</h4>
-    <hr>
-    {{ form_start(formComment) }}
+        </div>
 
-    {{ form_row(formComment.author, {'attr': {'placeholder': "Nom de l'auteur"}}
-    ) }}
-    {{ form_row(formComment.content, {'attr': {'placeholder': "Contenu du commentaire"}}
-    ) }}
-    <button type="submit" class="btn btn-primary">Ajouter le commentaire</button>
+      </article>
 
-    {{ form_end(formComment)}}
-  </section>
+      <section id="comments">
+        <h2>Commentaire</h2>
+        <br>
+        {% for comment in article.comments %}
+          <h4>{{ comment.getAuthor }}</h4>
+          <div class="metadata">Ecrit le
+            {{ comment.getCreatedAt | date('d/m/Y à H:i') }}.</div>
+          <div class="content">
+            <p>{{ comment.getContent | raw }}</p>
+            <hr>
+          </div>
+        {% endfor %}
+      </section>
 
+      <section id="newComment">
+        <h4>Laissez votre commentaire sur cette article :</h4>
+        <hr>
+        {{ form_start(formComment) }}
+
+        {{ form_row(formComment.author, {'attr': {'placeholder': "Nom de l'auteur"}}
+        ) }}
+        {{ form_row(formComment.content, {'attr': {'placeholder': "Contenu du commentaire"}}
+        ) }}
+        <button type="submit" class="btn btn-outline-dark">Ajouter le commentaire</button>
+
+        {{ form_end(formComment)}}
+      </section>
+    </div>
+  </div>
 {% endblock %}

@@ -1,4 +1,69 @@
-body {
-  background-color: grey;
-  font-family: 15px "Times New Roman", Times, serif;
+.card {
+  width: 18rem !important;
+}
+
+h2 {
+  font-family: Georgia, serif;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+}
+
+h4 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-variant: normal;
+}
+
+p {
+  font-family: Georgia;
+  font-size: 16px;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+a {
+  color: black;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: white;
+  text-align: center;
+  font-size: 17px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  color: black;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
