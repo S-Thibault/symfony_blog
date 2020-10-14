@@ -18,7 +18,7 @@
           {{ article.getCategory.getTitle }}</div>
         <br>
         <div class="content">
-          <img src="{{ article.getImage }}" alt="">
+          <img class="img" src="{{ article.getImage }}" alt="">
           <hr>
           {{ article.getContent | raw }}
           <a href="{{ path('blog_edit', {'id': article.getId }) }}" class="btn btn-outline-dark">Modifier l'article</a>

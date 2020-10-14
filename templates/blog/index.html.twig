@@ -31,7 +31,7 @@
               <div class="content text-justify">
                 <img class="card-img-top" src="{{ article.getImage }}" alt="">
                 <hr>
-                <p class="lead ">{{ article.getContent | slice(0, 100) | raw  }} ... </p>
+                <p class="lead card-text-1">{{ article.getContent | slice(0, 85) | raw  }} ... </p>
                 <hr>
                 <a class="button" href="{{ path('blog_show', {'id': article.getId }) }}"><span>Lire la suite</span></a>
               </div>

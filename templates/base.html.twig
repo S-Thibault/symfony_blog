@@ -15,18 +15,20 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-dark bg-secondary nav-justified">
-      <a class="nav-item nav-link active text-white" href="{{ path('blog')}}">Accueil</a>
-            <a class="nav-item nav-link active text-white" href="{{ path('blog_create') }}">Créer un article</a>
+    <nav class="navbar bg-secondary">
+      <a class="nav-item nav-link text-white" href="{{ path('blog')}}">Accueil</a>
+            <a class="nav-item nav-link text-white" href="{{ path('blog_create') }}">Créer un article</a>
           {% if not app.user %}
-              <a class="nav-item nav-link active text-white" href="{{ path('security_login') }}">Se connecter</a>
-              <a class="nav-item nav-link active text-white" href="{{ path('security_registration') }}">S'enregistrer</a>
+              <a class="nav-item nav-link text-white" href="{{ path('security_login') }}">Se connecter</a>
+              <a class="nav-item nav-link text-white" href="{{ path('security_registration') }}">S'enregistrer</a>
           {% else %}
-              <a class="nav-item nav-link active text-white" href="{{ path('security_logout') }}">Se déconnecter</a>
+              <a class="nav-item nav-link text-white" href="{{ path('security_logout') }}">Se déconnecter</a>
           {% endif %}
     </nav>
 
-
+    <style>
+    div { background-image: url("/bundles/app/images/top_bg.jpg"); }
+    </style>
 
     <div class="container p-5">
       {% block body %}{% endblock %}

@@ -1,5 +1,32 @@
+body {
+  background-image: url("../../images/top_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .card {
   width: 18rem !important;
+  border: 5px solid;
+  border-radius: .5em;
+  padding: 10px;
+  display: flex;
+  width: 500px;
+  flex: 1 1 0;
+}
+
+.card-text {
+  min-height: 100px;
+  text-align: center;
+}
+
+.card-img-top{
+  max-width: 100%;
+	height: auto;
+ border: 1px solid;
+}
+
+.card-text-1 {
+  min-height: 10px;
 }
 
 h2 {
@@ -66,4 +93,9 @@ a {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.img{
+  max-width: 100%;
+	height: auto;
 }
