@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>
-      {% block title %}{% endblock %}
+      {% block title %}Accueil{% endblock %}
     </title>
 
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
@@ -12,28 +12,39 @@
       <link rel="stylesheet" href="/css/style.css">
     {% endblock %}
 
-  </head>
-  <body>
-
-    <nav class="navbar bg-secondary">
-      <a class="nav-item nav-link text-white" href="{{ path('blog')}}">Accueil</a>
-            <a class="nav-item nav-link text-white" href="{{ path('blog_create') }}">Créer un article</a>
-          {% if not app.user %}
-              <a class="nav-item nav-link text-white" href="{{ path('security_login') }}">Se connecter</a>
-              <a class="nav-item nav-link text-white" href="{{ path('security_registration') }}">S'enregistrer</a>
-          {% else %}
-              <a class="nav-item nav-link text-white" href="{{ path('security_logout') }}">Se déconnecter</a>
-          {% endif %}
-    </nav>
-
-    <style>
-    div { background-image: url("/bundles/app/images/top_bg.jpg"); }
-    </style>
-
-    <div class="container p-5">
-      {% block body %}{% endblock %}
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <li><a id="len1" class="hoverable" href="{{ path('blog')}}">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a id="len2" class="hoverable" href="{{ path('blog_create') }}">Créer un article</a>
+      </li>
+      <div>
+        <img src="../images/logo.png" alt="logo">
+      </div>
+      {% if not app.user %}
+        <li class="nav-item">
+          <a id="len3" class="hoverable" href="{{ path('security_login') }}">Se connecter</a>
+        </li>
+        <li class="nav-item">
+          <a id="len4" class="hoverable" href="{{ path('security_registration') }}">S'enregistrer</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a id="len5" class="hoverable" href="{{ path('security_logout') }}">Se déconnecter</a>
+        </li>
+      {% endif %}
     </div>
+  </nav>
 
-    {% block javascripts %}{% endblock %}
-  </body>
+</head>
+<body>
+
+  <div class="container p-5">
+    {% block body %}{% endblock %}
+  </div>
+
+  {% block javascripts %}{% endblock %}
+
+</body>
 </html>
